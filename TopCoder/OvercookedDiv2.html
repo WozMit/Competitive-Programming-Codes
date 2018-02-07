@@ -1,0 +1,43 @@
+<html><body bgcolor="#000000" text="#ffffff"><table><tr><td colspan="2"><h3>Problem Statement</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><p>
+Alice and Bob are playing a popular game called Overcooked.
+In this game, players work together to cook dishes and serve them to customers.
+We'll be discussing a simplified version of the game in this problem.
+</p>
+
+<p>
+Alice and Bob wish to prepare a single dish.
+The recipe consists of n steps.
+The steps must be done sequentially in order from 0 to n-1: step i+1 cannot be started before step i has been completed.
+(It is allowed to start the next step in the same moment in which they finished working on the previous step.)
+</p>
+
+<p>
+Alice and Bob have a stopwatch.
+At the beginning of the game they start the stopwatch.
+Each step of the recipe can only be started when the time on the stopwatch is an integer.
+Additionally, the steps are not necessarily available from the start: the i-th step only becomes available when the stopwatch reaches <b>start</b>[i] seconds.
+Step i takes <b>time</b>[i] seconds to complete.
+</p>
+
+<p>
+Given a particular schedule that describes when to do which step of the recipe, we can measure the waiting times.
+For each step of the recipe, the waiting time before step i is the idle time between finishing step i-1 and starting step i.
+(For step 0, the waiting time is the time between starting the stopwatch and starting step 0.)
+The boredom level of the schedule is the maximum of all waiting times.
+</p>
+
+<p>
+You are given the vector &lt;int&gt;s <b>start</b> and <b>time</b>.
+Determine and return the smallest possible boredom level of a schedule that describes how to execute the given recipe.
+</p></td></tr><tr><td colspan="2"><h3>Definition</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Class:</td><td>OvercookedDiv2</td></tr><tr><td>Method:</td><td>minStale</td></tr><tr><td>Parameters:</td><td>vector &lt;int&gt;, vector &lt;int&gt;</td></tr><tr><td>Returns:</td><td>int</td></tr><tr><td>Method signature:</td><td>int minStale(vector &lt;int&gt; start, vector &lt;int&gt; time)</td></tr><tr><td colspan="2">(be sure your method is public)</td></tr></table></td></tr><tr><td colspan="2"><h3>Limits</h3></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td>Time limit (s):</td><td>2.000</td></tr><tr><td>Memory limit (MB):</td><td>256</td></tr><tr><td>Stack limit (MB):</td><td>256</td></tr></table></td></tr><tr><td colspan="2"><h3>Constraints</h3></td></tr><tr><td align="center" valign="top">-</td><td><b>start,time</b> will have the same number of elements.</td></tr><tr><td align="center" valign="top">-</td><td><b>start</b> will have between 1 and 50 elements, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Each element of <b>start,time</b> will be between 1 and 10^6, inclusive.</td></tr><tr><td align="center" valign="top">-</td><td>Elements in <b>start</b> will be in increasing order.</td></tr><tr><td colspan="2"><h3>Examples</h3></td></tr><tr><td align="center" nowrap="true">0)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,5,10}</pre></td></tr><tr><td><pre>{3,6,1}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1</pre></td></tr><tr><td><table><tr><td colspan="2">
+The smallest possible boredom level is 1 second.
+It can be achieved with the following schedule:
+<ul>
+<li>0: Wait for 1 second.</li>
+<li>1: Step 0 now becomes available. Start doing it.</li>
+<li>4: Finish doing step 0. Wait for 1 second.</li>
+<li>5: Step 1 now becomes available. Start doing it.</li>
+<li>10: Step 2 now becomes available, but we are still doing step 1.</li>
+<li>11: Finish doing step 1. Without any waiting start doing step 2.</li>
+<li>12: Finish the recipe.</li>
+</ul></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">1)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{3,10}</pre></td></tr><tr><td><pre>{1,10}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 5</pre></td></tr><tr><td><table><tr><td colspan="2">Here, it is better to wait until time 4 or 5 to start the first step.</td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">2)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1,10,100,1000,10000,100000}</pre></td></tr><tr><td><pre>{50,50,50,50,50,50}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 16625</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">3)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{10,30,50,60,70,80,90,100,110,120}</pre></td></tr><tr><td><pre>{5,4,3,2,1,5,4,3,2,1}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 14</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr><tr><td align="center" nowrap="true">4)</td><td></td></tr><tr><td>&#160;&#160;&#160;&#160;</td><td><table><tr><td><table><tr><td><pre>{1000}</pre></td></tr><tr><td><pre>{1000000}</pre></td></tr></table></td></tr><tr><td><pre>Returns: 1000</pre></td></tr><tr><td><table><tr><td colspan="2"></td></tr></table></td></tr></table></td></tr></table><p>This problem statement is the exclusive and proprietary property of TopCoder, Inc.  Any unauthorized use or reproduction of this information without the prior written consent of TopCoder, Inc. is strictly prohibited.  (c)2003, TopCoder, Inc.  All rights reserved.  </p></body></html>
